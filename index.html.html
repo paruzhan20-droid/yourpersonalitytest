@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Types of Modern Professions and the Importance of English</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f3f4f6; margin: 0; }
+    .container { max-width: 1200px; margin: 30px auto; background: #fff; padding: 30px; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    h1,h2,h3 { text-align: center; }
+    .lang-switch { text-align: center; margin-bottom: 20px; }
+    .lang-switch button { margin:0 6px; padding:8px 16px; border:none; border-radius:8px; cursor:pointer; background:#e5e7eb; font-weight:bold; }
+    .lang-switch button:hover { background:#d1d5db; }
+    .question { margin-bottom: 26px; padding-bottom:18px; border-bottom:1px solid #e5e7eb; }
+    .q-title { font-weight:bold; margin-bottom:8px; }
+    label { display:block; margin:6px 0; cursor:pointer; }
+    button.main { display:block; margin:30px auto; padding:14px 30px; background:#2563eb; color:#fff; border:none; border-radius:10px; font-size:16px; cursor:pointer; }
+    .result { display:none; margin-top:40px; }
+    .flex { display:flex; gap:30px; flex-wrap:wrap; align-items:stretch; }
+    .box { flex:1; background:#eef2ff; padding:22px; border-radius:14px; }
+    canvas { width:100% !important; max-width:600px; height:400px !important; margin:auto; display:block; }
+  </style>
+</head>
+<body>
+<div class="container">
+<div class="lang-switch">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('kz')">KZ</button>
+  <button onclick="setLang('ru')">RU</button>
+</div>
+<h1 data-en="Types of Modern Professions & Personality Assessment" data-kz="Қазіргі мамандықтар және тұлға типін анықтау" data-ru="Типы современных профессий и определение личности"></h1>
+<h2 data-en="Project theme: Types of modern professions and the importance of English" data-kz="Жоба тақырыбы: Қазіргі мамандықтар және ағылшын тілінің маңызы" data-ru="Тема проекта: Типы современных профессий и важность английского языка"></h2>
+<form id="testForm">
+
+<!-- QUESTIONS 1-10 -->
+<div class="question">
+  <div class="q-title" data-en="1. When you face a complex problem, what is your first instinct?" data-kz="1. Күрделі мәселе туындағанда, сіздің алғашқы әрекетіңіз қандай?" data-ru="1. Когда вы сталкиваетесь со сложной проблемой, ваша первая реакция — это:"></div>
+  <label><input type="radio" name="q1" value="analytic" required> <span data-en="Break the problem into parts and analyze each logically" data-kz="Мәселені бөліктерге бөліп, әрқайсысын логикалық түрде талдайсыз" data-ru="Разбиваете проблему на части и анализируете каждую логически"></span></label>
+  <label><input type="radio" name="q1" value="creative"> <span data-en="Look for an unconventional or innovative approach" data-kz="Ерекше немесе инновациялық түсіндірме іздейсіз" data-ru="Ищите нетрадиционный или инновационный подход"></span></label>
+  <label><input type="radio" name="q1" value="social"> <span data-en="Discuss it with others to hear different opinions" data-kz="Әртүрлі пікірлерді тыңдау үшін оны басқалармен талқылайсыз" data-ru="Обсудите это с другими, чтобы услышать разные мнения"></span></label>
+  <label><input type="radio" name="q1" value="practical"> <span data-en="Try a solution immediately and adjust if needed" data-kz="Шешімді дереу қолданып көресіз және қажет болса реттейсіз" data-ru="Немедленно попробуете решение и при необходимости внесете коррективы"></span></label>
+  <label><input type="radio" name="q1" value="managerial"> <span data-en="Evaluate options and choose the most effective decision" data-kz="Опцияларды бағалайсыз және ең тиімді шешімді таңдайсыз" data-ru="Оцените варианты и выберете наиболее эффективное решение"></span></label>
+</div>
+
+<div class="question">
+  <div class="q-title" data-en="2. Which activity gives you the most satisfaction?" data-kz="2. Қай әрекет сізге көбірек қанағат сезімін береді?" data-ru="2. Какая деятельность приносит вам наибольшее удовлетворение?"></div>
+  <label><input type="radio" name="q2" value="analytic" required> <span data-en="Working with data, facts, or systems" data-kz="Деректермен, фактілермен немесе жүйелермен жұмыс" data-ru="Работа с данными, фактами или системами"></span></label>
+  <label><input type="radio" name="q2" value="creative"> <span data-en="Creating something new or improving existing ideas" data-kz="Жаңа нәрсе жасау немесе бар идеяларды жетілдіру" data-ru="Создание чего-то нового или совершенствование существующих идей"></span></label>
+  <label><input type="radio" name="q2" value="social"> <span data-en="Helping, teaching, or supporting people" data-kz="Адамдарға көмектесу, оқыту немесе қолдау көрсету" data-ru="Помогать, обучать или поддерживать людей"></span></label>
+  <label><input type="radio" name="q2" value="practical"> <span data-en="Seeing tangible results of your work" data-kz="Сіздің жұмысыңыздың нақты нәтижелерін көру" data-ru="Видеть практические результаты своей работы"></span></label>
+  <label><input type="radio" name="q2" value="managerial"> <span data-en="Organizing people and achieving goals" data-kz="Адамдарды ұйымдастыру және мақсаттарға жету" data-ru="Организация людей и достижение целей"></span></label>
+</div>
+
+<div class="question">
+  <div class="q-title" data-en="3. How do you usually make important decisions?" data-kz="3. Маңызды шешімдерді әдетте қалай қабылдайсыз?" data-ru="3. Как вы обычно принимаете важные решения?"></div>
+  <label><input type="radio" name="q3" value="analytic" required> <span data-en="By carefully weighing pros and cons" data-kz="Артықшылықтары мен кемшіліктерін мұқият өлшеу арқылы" data-ru="Тщательно взвесив все "за" и "против""></span></label>
+  <label><input type="radio" name="q3" value="creative"> <span data-en="By trusting intuition and vision" data-kz="Түйсігі мен көзқарасына сену арқылы" data-ru="Доверяя интуиции и видению"></span></label>
+  <label><input type="radio" name="q3" value="social"> <span data-en="By considering how it affects others" data-kz="Бұл басқаларға қалай әсер ететінін ескере отырып" data-ru="Размышляя о том, как это влияет на других"></span></label>
+  <label><input type="radio" name="q3" value="practical"> <span data-en="Based on experience and real-world outcomes" data-kz="Тәжірибе мен нақты нәтижелерге сүйене отырып" data-ru="Основанный на опыте и реальных результатах"></span></label>
+  <label><input type="radio" name="q3" value="managerial"> <span data-en="By assessing risks and long-term impact" data-kz="Тәуекелдерді және ұзақ мерзімді әсерді бағалау арқылы" data-ru="Путем оценки рисков и долгосрочного воздействия"></span></label>
+</div>
+
+<div class="question">
+  <div class="q-title" data-en="4. What role do you naturally take in a group project?" data-kz="4. Топтық жобада сіз көбіне қандай рөл атқарасыз?" data-ru="4. Какую роль вы чаще всего занимаете в групповой работе?"></div>
+  <label><input type="radio" name="q4" value="analytic" required> <span data-en="The one who structures and analyzes information" data-kz="Ақпаратты құрылымдайтын және талдайтын адам" data-ru="Тот, кто структурирует и анализирует информацию"></span></label>
+  <label><input type="radio" name="q4" value="creative"> <span data-en="The idea generator" data-kz="Идея генераторы" data-ru="Генератор идей"></span></label>
+  <label><input type="radio" name="q4" value="social"> <span data-en="The mediator who keeps harmony" data-kz="Үйлесімділікті сақтайтын делдал" data-ru="Посредник, поддерживающий гармонию"></span></label>
+  <label><input type="radio" name="q4" value="practical"> <span data-en="The executor who gets things done" data-kz="Істі аяқтайтын орындаушы" data-ru="Исполнитель, который доводит дело до конца"></span></label>
+</div>
+
+<button type="submit" class="main" data-en="View result" data-kz="Нәтижені көру" data-ru="Посмотреть результат"></button>
+</form>
+<div class="result" id="result">
+  <div class="flex">
+    <div class="box">
+      <canvas id="chart"></canvas>
+    </div>
+    <div class="box" id="textResult"></div>
+  </div>
+  <div class="box" style="margin-top:30px">
+    <h3 data-en="Why English is essential for your type" data-kz="Неліктен ағылшын тілі сіздің типіңіз үшін маңызды" data-ru="Почему английский язык важен для вашего типа"></h3>
+    <p id="englishBlock"></p>
+  </div>
+  <div class="box" style="margin-top:30px">
+    <h3 data-en="Research framework" data-kz="Зерттеу бөлімі" data-ru="Исследовательская часть"></h3>
+    <p data-en="Hypothesis: Understanding personality types helps individuals choose modern professions where English is essential." data-kz="Гипотеза: Тұлға типін түсіну ағылшын тілі маңызды болатын заманауи мамандықтарды таңдауға көмектеседі." data-ru="Гипотеза: Понимание типа личности помогает выбрать современные профессии, где английский язык необходим."></p>
+    <p data-en="Goal: To identify professional orientation through critical-thinking-based assessment." data-kz="Мақсат: Сыни ойлауға негізделген бағалау арқылы кәсіби бағытты анықтау." data-ru="Цель: Определить профессиональную направленность на основе критического мышления."></p>
+    <p data-en="Objectives: To analyze responses, compare personality types, and identify relevant modern professions." data-kz="Міндеттер: Жауаптарды талдау, тұлға типтерін салыстыру, заманауи мамандықтарды анықтау." data-ru="Задачи: Проанализировать ответы, сравнить типы личности, определить современные профессии."></p>
+    <p data-en="Methods: Questionnaire, statistical analysis, comparison, interpretation." data-kz="Әдістер: Сауалнама, статистикалық талдау, салыстыру, интерпретация." data-ru="Методы: Анкетирование, статистический анализ, сравнение, интерпретация."></p>
+  </div>
+  <div class="box" style="margin-top:30px">
+    <h3 data-en="Conclusion" data-kz="Қорытынды" data-ru="Заключение"></h3>
+    <p data-en="This project demonstrates that a structured personality assessment can effectively identify professional orientation in the context of modern and future-oriented careers. The findings confirm that English plays a crucial role in accessing global knowledge, participating in international collaboration, and achieving professional mobility. The integration of critical thinking and language competence provides a reliable foundation for informed career decision-making." data-kz="Бұл жоба құрылымдалған тұлға бағалауы заманауи және болашақ мамандықтарға кәсіби бағытты тиімді анықтай алатынын көрсетеді. Зерттеу нәтижелері ағылшын тілінің жаһандық білімге қол жеткізу, халықаралық ынтымақтастық және кәсіби ұтқырлық үшін маңызды екенін дәлелдейді." data-ru="Данный проект показывает, что структурированная оценка личности позволяет эффективно определить профессиональную направленность в условиях современных и будущих профессий. Результаты подтверждают ключевую роль английского языка для доступа к глобальным знаниям и международного профессионального взаимодействия."></p>
+  </div>
+</div>
+</div>
+<script>
+let currentLang='en';
+function setLang(lang){currentLang=lang;document.querySelectorAll('[data-en]').forEach(el=>{el.innerText=el.dataset[lang];});}
+setLang('en');
+document.getElementById('testForm').addEventListener('submit',function(e){
+e.preventDefault();
+const data=new FormData(e.target);
+const scores={analytic:0,creative:0,social:0,practical:0,managerial:0};
+data.forEach(v=>{if(scores[v]!==undefined)scores[v]++;});
+const total=Object.values(scores).reduce((a,b)=>a+b,0);
+const perc={};Object.keys(scores).forEach(k=>perc[k]=Math.round(scores[k]/total*100));
+const dominant=Object.keys(perc).reduce((a,b)=>perc[a]>perc[b]?a:b);
+new Chart(document.getElementById('chart'),{
+  type:'pie',
+  data:{
+    labels:['Analytical','Creative','Social','Practical','Managerial'],
+    datasets:[{data:Object.values(perc),backgroundColor:['#2563eb','#7c3aed','#f59e0b','#ef4444','#10b981']}]
+  }
+});
+const explanations={analytic:{en:"You demonstrate a strong analytical personality type. Your strengths include logical reasoning, data interpretation, and systems thinking. Suitable modern professions include data analyst, AI researcher, cybersecurity specialist, and business intelligence expert.",kz:"Сізде аналитикалық тұлға типі басым. Сіздің күшті жақтарыңыз — логикалық ойлау, деректерді талдау және жүйелік ойлау. Сізге деректер талдаушысы, AI зерттеуші, киберқауіпсіздік маманы сияқты заманауи мамандықтар сәйкес келеді.",ru:"У вас доминирует аналитический тип личности. Ваши сильные стороны — логическое мышление, анализ данных и системное мышление. Вам подходят профессии аналитика данных, AI-исследователя и специалиста по кибербезопасности."},creative:{en:"You have a creative personality type characterized by innovation and originality. Your strengths lie in idea generation and conceptual thinking. Relevant professions include UX designer, digital content creator, game designer, and creative technologist.",kz:"Сіз шығармашылық тұлға типіне жатасыз. Сіздің күшті жақтарыңыз — идея тудыру және концептуалдық ойлау. UX дизайнер, цифрлық контент жасаушы, гейм-дизайнер сияқты мамандықтар сізге сәйкес.",ru:"Вы относитесь к творческому типу личности. Ваши сильные стороны — генерация идей и концептуальное мышление. Вам подходят профессии UX-дизайнера, цифрового контент-креатора и гейм-дизайнера."},social:{en:"You display a socially oriented personality type. Your strengths include communication, empathy, and collaboration. Suitable professions include HR specialist, community manager, education technologist, and international consultant.",kz:"Сіз әлеуметтік бағытталған тұлғасыз. Сіздің күшті жақтарыңыз — қарым-қатынас, эмпатия және ынтымақтастық. HR маманы, комьюнити-менеджер, білім беру технологы мамандықтары сәйкес келеді.",ru:"Вы социально ориентированная личность. Ваши сильные стороны — коммуникация, эмпатия и сотрудничество. Вам подходят профессии HR-специалиста, комьюнити-менеджера и образовательного технолога."},practical:{en:"You are a practical personality type focused on real-world application. Your strengths include efficiency and technical implementation. Relevant professions include product engineer, operations analyst, and logistics specialist.",kz:"Сіз практикалық тұлға типіне жатасыз. Сіздің күшті жақтарыңыз — тиімділік пен техникалық іске асыру. Өнім инженері, операциялық талдаушы мамандықтары сәйкес келеді.",ru:"Вы практичный тип личности, ориентированный на применение. Ваши сильные стороны — эффективность и техническая реализация. Вам подходят профессии продуктового инженера и операционного аналитика."},managerial:{en:"You demonstrate a managerial personality type. Your strengths include leadership, strategic planning, and decision-making. Suitable professions include project manager, product manager, startup founder, and business strategist.",kz:"Сізде басқарушылық тұлға типі дамыған. Сіздің күшті жақтарыңыз — көшбасшылық, стратегиялық жоспарлау және шешім қабылдау. Жоба менеджері, өнім менеджері, стартап негізін қалаушы мамандықтары сәйкес келеді.",ru:"У вас управленческий тип личности. Ваши сильные стороны — лидерство, стратегическое планирование и принятие решений. Вам подходят профессии проектного менеджера, продакт-менеджера и основателя стартапа."}};
+const englishImportance={analytic:{en:"English enables access to scientific research, technical documentation, and global data resources.",kz:"Ағылшын тілі ғылыми зерттеулерге, техникалық құжаттарға және жаһандық деректерге қол жеткізуге мүмкіндік береді.",ru:"Английский язык дает доступ к научным исследованиям, технической документации и глобальным данным."},creative:{en:"English allows creative professionals to participate in global digital and cultural industries.",kz:"Ағылшын тілі шығармашылық мамандарға жаһандық цифрлық және мәдени индустрияларға қатысуға мүмкіндік береді.",ru:"Английский язык позволяет творческим специалистам участвовать в глобальных цифровых и культурных индустриях."},social:{en:"English is essential for cross-cultural communication and international collaboration.",kz:"Ағылшын тілі мәдениетаралық қарым-қатынас пен халықаралық ынтымақтастық үшін қажет.",ru:"Английский язык необходим для межкультурного общения и международного сотрудничества."},practical:{en:"English is required to work with international standards, tools, and technologies.",kz:"Ағылшын тілі халықаралық стандарттармен, құралдармен және технологиялармен жұмыс істеу үшін қажет.",ru:"Английский язык необходим для работы с международными стандартами, инструментами и технологиями."},managerial:{en:"English is critical for global leadership, negotiation, and business strategy.",kz:"Ағылшын тілі жаһандық көшбасшылық, келіссөздер және бизнес стратегия үшін маңызды.",ru:"Английский язык критически важен для глобального лидерства, переговоров и бизнес-стратегии."}};
+document.getElementById('textResult').innerText=explanations[dominant][currentLang];
+document.getElementById('englishBlock').innerText=englishImportance[dominant][currentLang];
+document.getElementById('result').style.display='block';
+});
+</script>
+</body>
+</html>
