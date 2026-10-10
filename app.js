@@ -250,17 +250,26 @@
     renderProfs(top);
     renderEnglish(top);
 
-    if (chart) {
-      chart.data.labels = UI.names[lang];
-      chart.data.datasets[0].data = perc;
-      chart.update();
-    } else {
-      chart = new Chart(document.getElementById('chart'), {
-        type: 'doughnut',
-        data: { labels: UI.names[lang], datasets: [{ data: perc, backgroundColor: COLORS }] },
-        options: { plugins: { legend: { position: 'bottom' } } }
-      });
+    let host = document.getElementById('chart');
+    if (host.tagName === 'CANVAS') {
+      const d = el('div', 'donut');
+      d.id = 'chart';
+      host.replaceWith(d);
+      host = d;
     }
+    let acc = 0;
+    const stops = perc.map((v, i) => {
+      const from = acc;
+      acc += v;
+      return COLORS[i] + ' ' + from + '% ' + (i === perc.length - 1 ? 100 : acc) + '%';
+    });
+    host.style.background = 'conic-gradient(' + stops.join(',') + ')';
+    host.setAttribute('role', 'img');
+    host.setAttribute('aria-label', UI.names[lang].map((n, i) => n + ' ' + perc[i] + '%').join(', '));
+    host.textContent = '';
+    const center = el('div', 'donut-center');
+    center.append(el('strong', '', perc[order[0]] + '%'), el('span', '', UI.names[lang][order[0]]));
+    host.append(center);
   }
 
   function setLang(next) {
