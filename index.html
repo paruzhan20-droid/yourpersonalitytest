@@ -2,85 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Types of Modern Professions and the Importance of English</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Personality test for choosing a modern profession, and why English matters." />
+  <title>Types of Modern Professions and the Importance of English</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <div class="container">
-<div class="lang-switch">
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('kz')">KZ</button>
-  <button onclick="setLang('ru')">RU</button>
-</div>
-<h1 data-en="Types of Modern Professions & Personality Assessment" data-kz="Қазіргі мамандықтар және тұлға типін анықтау" data-ru="Типы современных профессий и определение личности"></h1>
-<h2 data-en="Project theme: Types of modern professions and the importance of English" data-kz="Жоба тақырыбы: Қазіргі мамандықтар және ағылшын тілінің маңызы" data-ru="Тема проекта: Типы современных профессий и важность английского языка"></h2>
-<form id="testForm">
+  <div class="lang-switch">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('kz')">KZ</button>
+    <button onclick="setLang('ru')">RU</button>
+  </div>
+  <h1 data-en="Types of Modern Professions & Personality Assessment" data-kz="Қазіргі мамандықтар және тұлға типін анықтау" data-ru="Типы современных профессий и определение личности"></h1>
+  <h2 data-en="Project theme: Types of modern professions and the importance of English" data-kz="Жоба тақырыбы: Қазіргі мамандықтар және ағылшын тілінің маңызы" data-ru="Тема проекта: Типы современных профессий и важность английского языка"></h2>
 
-<!-- QUESTIONS 1-10 -->
-<div class="question">
-  <div class="q-title" data-en="1. When you face a complex problem, what is your first instinct?" data-kz="1. Күрделі мәселе туындағанда, сіздің алғашқы әрекетіңіз қандай?" data-ru="1. Когда вы сталкиваетесь со сложной проблемой, ваша первая реакция — это:"></div>
-  <label><input type="radio" name="q1" value="analytic" required> <span data-en="Break the problem into parts and analyze each logically" data-kz="Мәселені бөліктерге бөліп, әрқайсысын логикалық түрде талдайсыз" data-ru="Разбиваете проблему на части и анализируете каждую логически"></span></label>
-  <label><input type="radio" name="q1" value="creative"> <span data-en="Look for an unconventional or innovative approach" data-kz="Ерекше немесе инновациялық түсіндірме іздейсіз" data-ru="Ищите нетрадиционный или инновационный подход"></span></label>
-  <label><input type="radio" name="q1" value="social"> <span data-en="Discuss it with others to hear different opinions" data-kz="Әртүрлі пікірлерді тыңдау үшін оны басқалармен талқылайсыз" data-ru="Обсудите это с другими, чтобы услышать разные мнения"></span></label>
-  <label><input type="radio" name="q1" value="practical"> <span data-en="Try a solution immediately and adjust if needed" data-kz="Шешімді дереу қолданып көресіз және қажет болса реттейсіз" data-ru="Немедленно попробуете решение и при необходимости внесете коррективы"></span></label>
-  <label><input type="radio" name="q1" value="managerial"> <span data-en="Evaluate options and choose the most effective decision" data-kz="Опцияларды бағалайсыз және ең тиімді шешімді таңдайсыз" data-ru="Оцените варианты и выберете наиболее эффективное решение"></span></label>
-</div>
+  <form id="testForm">
+    <div id="qlist"></div>
+    <button type="submit" class="main" data-en="View result" data-kz="Нәтижені көру" data-ru="Посмотреть результат"></button>
+  </form>
 
-<div class="question">
-  <div class="q-title" data-en="2. Which activity gives you the most satisfaction?" data-kz="2. Қай әрекет сізге көбірек қанағат сезімін береді?" data-ru="2. Какая деятельность приносит вам наибольшее удовлетворение?"></div>
-  <label><input type="radio" name="q2" value="analytic" required> <span data-en="Working with data, facts, or systems" data-kz="Деректермен, фактілермен немесе жүйелермен жұмыс" data-ru="Работа с данными, фактами или системами"></span></label>
-  <label><input type="radio" name="q2" value="creative"> <span data-en="Creating something new or improving existing ideas" data-kz="Жаңа нәрсе жасау немесе бар идеяларды жетілдіру" data-ru="Создание чего-то нового или совершенствование существующих идей"></span></label>
-  <label><input type="radio" name="q2" value="social"> <span data-en="Helping, teaching, or supporting people" data-kz="Адамдарға көмектесу, оқыту немесе қолдау көрсету" data-ru="Помогать, обучать или поддерживать людей"></span></label>
-  <label><input type="radio" name="q2" value="practical"> <span data-en="Seeing tangible results of your work" data-kz="Сіздің жұмысыңыздың нақты нәтижелерін көру" data-ru="Видеть практические результаты своей работы"></span></label>
-  <label><input type="radio" name="q2" value="managerial"> <span data-en="Organizing people and achieving goals" data-kz="Адамдарды ұйымдастыру және мақсаттарға жету" data-ru="Организация людей и достижение целей"></span></label>
-</div>
-
-<div class="question">
-  <div class="q-title" data-en="3. How do you usually make important decisions?" data-kz="3. Маңызды шешімдерді әдетте қалай қабылдайсыз?" data-ru="3. Как вы обычно принимаете важные решения?"></div>
-  <label><input type="radio" name="q3" value="analytic" required> <span data-en="By carefully weighing pros and cons" data-kz="Артықшылықтары мен кемшіліктерін мұқият өлшеу арқылы" data-ru="Тщательно взвесив все "за" и "против""></span></label>
-  <label><input type="radio" name="q3" value="creative"> <span data-en="By trusting intuition and vision" data-kz="Түйсігі мен көзқарасына сену арқылы" data-ru="Доверяя интуиции и видению"></span></label>
-  <label><input type="radio" name="q3" value="social"> <span data-en="By considering how it affects others" data-kz="Бұл басқаларға қалай әсер ететінін ескере отырып" data-ru="Размышляя о том, как это влияет на других"></span></label>
-  <label><input type="radio" name="q3" value="practical"> <span data-en="Based on experience and real-world outcomes" data-kz="Тәжірибе мен нақты нәтижелерге сүйене отырып" data-ru="Основанный на опыте и реальных результатах"></span></label>
-  <label><input type="radio" name="q3" value="managerial"> <span data-en="By assessing risks and long-term impact" data-kz="Тәуекелдерді және ұзақ мерзімді әсерді бағалау арқылы" data-ru="Путем оценки рисков и долгосрочного воздействия"></span></label>
-</div>
-
-<div class="question">
-  <div class="q-title" data-en="4. What role do you naturally take in a group project?" data-kz="4. Топтық жобада сіз көбіне қандай рөл атқарасыз?" data-ru="4. Какую роль вы чаще всего занимаете в групповой работе?"></div>
-  <label><input type="radio" name="q4" value="analytic" required> <span data-en="The one who structures and analyzes information" data-kz="Ақпаратты құрылымдайтын және талдайтын адам" data-ru="Тот, кто структурирует и анализирует информацию"></span></label>
-  <label><input type="radio" name="q4" value="creative"> <span data-en="The idea generator" data-kz="Идея генераторы" data-ru="Генератор идей"></span></label>
-  <label><input type="radio" name="q4" value="social"> <span data-en="The mediator who keeps harmony" data-kz="Үйлесімділікті сақтайтын делдал" data-ru="Посредник, поддерживающий гармонию"></span></label>
-  <label><input type="radio" name="q4" value="practical"> <span data-en="The executor who gets things done" data-kz="Істі аяқтайтын орындаушы" data-ru="Исполнитель, который доводит дело до конца"></span></label>
-</div>
-
-<button type="submit" class="main" data-en="View result" data-kz="Нәтижені көру" data-ru="Посмотреть результат"></button>
-</form>
-<div class="result" id="result">
-  <div class="flex">
-    <div class="box">
-      <canvas id="chart"></canvas>
+  <div class="result" id="result">
+    <div class="flex">
+      <div class="box"><canvas id="chart"></canvas></div>
+      <div class="box" id="textResult"></div>
     </div>
-    <div class="box" id="textResult"></div>
-  </div>
-  <div class="box" style="margin-top:30px">
-    <h3 data-en="Why English is essential for your type" data-kz="Неліктен ағылшын тілі сіздің типіңіз үшін маңызды" data-ru="Почему английский язык важен для вашего типа"></h3>
-    <p id="englishBlock"></p>
-  </div>
-  <div class="box" style="margin-top:30px">
-    <h3 data-en="Research framework" data-kz="Зерттеу бөлімі" data-ru="Исследовательская часть"></h3>
-    <p data-en="Hypothesis: Understanding personality types helps individuals choose modern professions where English is essential." data-kz="Гипотеза: Тұлға типін түсіну ағылшын тілі маңызды болатын заманауи мамандықтарды таңдауға көмектеседі." data-ru="Гипотеза: Понимание типа личности помогает выбрать современные профессии, где английский язык необходим."></p>
-    <p data-en="Goal: To identify professional orientation through critical-thinking-based assessment." data-kz="Мақсат: Сыни ойлауға негізделген бағалау арқылы кәсіби бағытты анықтау." data-ru="Цель: Определить профессиональную направленность на основе критического мышления."></p>
-    <p data-en="Objectives: To analyze responses, compare personality types, and identify relevant modern professions." data-kz="Міндеттер: Жауаптарды талдау, тұлға типтерін салыстыру, заманауи мамандықтарды анықтау." data-ru="Задачи: Проанализировать ответы, сравнить типы личности, определить современные профессии."></p>
-    <p data-en="Methods: Questionnaire, statistical analysis, comparison, interpretation." data-kz="Әдістер: Сауалнама, статистикалық талдау, салыстыру, интерпретация." data-ru="Методы: Анкетирование, статистический анализ, сравнение, интерпретация."></p>
-  </div>
-  <div class="box" style="margin-top:30px">
-    <h3 data-en="Conclusion" data-kz="Қорытынды" data-ru="Заключение"></h3>
-    <p data-en="This project demonstrates that a structured personality assessment can effectively identify professional orientation in the context of modern and future-oriented careers. The findings confirm that English plays a crucial role in accessing global knowledge, participating in international collaboration, and achieving professional mobility. The integration of critical thinking and language competence provides a reliable foundation for informed career decision-making." data-kz="Бұл жоба құрылымдалған тұлға бағалауы заманауи және болашақ мамандықтарға кәсіби бағытты тиімді анықтай алатынын көрсетеді. Зерттеу нәтижелері ағылшын тілінің жаһандық білімге қол жеткізу, халықаралық ынтымақтастық және кәсіби ұтқырлық үшін маңызды екенін дәлелдейді." data-ru="Данный проект показывает, что структурированная оценка личности позволяет эффективно определить профессиональную направленность в условиях современных и будущих профессий. Результаты подтверждают ключевую роль английского языка для доступа к глобальным знаниям и международного профессионального взаимодействия."></p>
+
+    <p class="disclaimer" data-en="This test shows a tendency, not a verdict: a mixed result is normal." data-kz="Бұл тест үрдісті көрсетеді, үкім емес: аралас нәтиже қалыпты жағдай." data-ru="Тест показывает склонность, а не приговор: смешанный результат — это нормально."></p>
+
+    <div class="box english-box">
+      <h3 data-en="Why English is essential for your type" data-kz="Неліктен ағылшын тілі сіздің типіңіз үшін маңызды" data-ru="Почему английский язык важен для вашего типа"></h3>
+      <p id="englishBlock"></p>
+    </div>
+
+    <div class="box">
+      <h3 data-en="Research framework" data-kz="Зерттеу бөлімі" data-ru="Исследовательская часть"></h3>
+      <div class="research">
+        <p data-en="Hypothesis: Understanding personality types helps individuals choose modern professions where English is essential." data-kz="Гипотеза: Тұлға типін түсіну ағылшын тілі маңызды болатын заманауи мамандықтарды таңдауға көмектеседі." data-ru="Гипотеза: Понимание типа личности помогает выбрать современные профессии, где английский язык необходим."></p>
+        <p data-en="Goal: To identify professional orientation through critical-thinking-based assessment." data-kz="Мақсат: Сыни ойлауға негізделген бағалау арқылы кәсіби бағытты анықтау." data-ru="Цель: Определить профессиональную направленность на основе критического мышления."></p>
+        <p data-en="Objectives: To analyze responses, compare personality types, and identify relevant modern professions." data-kz="Міндеттер: Жауаптарды талдау, тұлға типтерін салыстыру, заманауи мамандықтарды анықтау." data-ru="Задачи: Проанализировать ответы, сравнить типы личности, определить современные профессии."></p>
+        <p data-en="Methods: Questionnaire, statistical analysis, comparison, interpretation." data-kz="Әдістер: Сауалнама, статистикалық талдау, салыстыру, интерпретация." data-ru="Методы: Анкетирование, статистический анализ, сравнение, интерпретация."></p>
+        <p data-en="Relevance: Many modern professions require English for learning, collaboration and career growth." data-kz="Өзектілігі: Көптеген заманауи мамандықтар оқу, ынтымақтастық және мансаптық өсу үшін ағылшын тілін қажет етеді." data-ru="Актуальность: Многие современные профессии требуют английского для обучения, сотрудничества и карьерного роста."></p>
+        <p data-en="Expected results: Each personality type is linked to professions and the English skills they need." data-kz="Күтілетін нәтиже: Әр тұлға типі мамандықтармен және оларға қажетті ағылшын тілі дағдыларымен байланыстырылады." data-ru="Ожидаемый результат: Каждый тип личности связывается с профессиями и необходимыми им навыками английского."></p>
+        <p data-en="Limitations: The test is a short self-assessment; it guides but does not replace a career consultation." data-kz="Шектеулер: Тест — қысқа өзін-өзі бағалау; ол бағыт береді, бірақ кәсіби кеңесті алмастырмайды." data-ru="Ограничения: Тест — краткая самооценка; он помогает сориентироваться, но не заменяет консультацию профориентолога."></p>
+      </div>
+    </div>
+
+    <div class="box steps">
+      <h3 data-en="Your next steps" data-kz="Келесі қадамдар" data-ru="Ваши следующие шаги"></h3>
+      <ol>
+        <li data-en="Pick 1–2 professions from the cards and read job postings on hh.kz or LinkedIn." data-kz="Карточкалардан 1–2 мамандық таңдап, hh.kz немесе LinkedIn сайттарынан вакансияларды оқыңыз." data-ru="Выберите 1–2 профессии из карточек и почитайте вакансии на hh.kz или LinkedIn."></li>
+        <li data-en="Check which English level they require and compare it with yours." data-kz="Олар қандай ағылшын деңгейін талап ететінін тексеріп, өз деңгейіңізбен салыстырыңыз." data-ru="Посмотрите, какой уровень английского нужен, и сравните со своим."></li>
+        <li data-en="Make a weekly English plan using the tip above and retake the test in a few months." data-kz="Жоғарыдағы кеңес бойынша апталық жоспар құрып, бірнеше айдан соң тестті қайта өтіңіз." data-ru="Составьте недельный план по совету выше и пройдите тест снова через несколько месяцев."></li>
+      </ol>
+    </div>
+
+    <div class="box conclusion">
+      <h3 data-en="Conclusion" data-kz="Қорытынды" data-ru="Заключение"></h3>
+      <p data-en="This project demonstrates that a structured personality assessment can effectively identify professional orientation in the context of modern and future-oriented careers. The findings confirm that English plays a crucial role in accessing global knowledge, participating in international collaboration, and achieving professional mobility. The integration of critical thinking and language competence provides a reliable foundation for informed career decision-making." data-kz="Бұл жоба құрылымдалған тұлға бағалауы заманауи және болашақ мамандықтарға кәсіби бағытты тиімді анықтай алатынын көрсетеді. Зерттеу нәтижелері ағылшын тілінің жаһандық білімге қол жеткізу, халықаралық ынтымақтастық және кәсіби ұтқырлық үшін маңызды екенін дәлелдейді." data-ru="Данный проект показывает, что структурированная оценка личности позволяет эффективно определить профессиональную направленность в условиях современных и будущих профессий. Результаты подтверждают ключевую роль английского языка для доступа к глобальным знаниям и международного профессионального взаимодействия."></p>
+    </div>
   </div>
 </div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7"></script>
+<script src="questions.js"></script>
 <script src="professions.js"></script>
+<script src="english.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
