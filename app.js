@@ -12,6 +12,10 @@
     answered: { en: 'answered', kz: 'жауап берілді', ru: 'отвечено' },
     retake: { en: 'Retake the test', kz: 'Тестті қайта өту', ru: 'Пройти тест заново' },
     second: { en: 'Second strongest type: ', kz: 'Екінші басым тип: ', ru: 'Второй по силе тип: ' },
+    engSkills: { en: 'English skills you will use', kz: 'Қажетті ағылшын дағдылары', ru: 'Какие навыки английского нужны' },
+    engCerts: { en: 'Useful exams and courses', kz: 'Пайдалы емтихандар мен курстар', ru: 'Полезные экзамены и курсы' },
+    engLevel: { en: 'Target level (approx.)', kz: 'Мақсатты деңгей (шамамен)', ru: 'Желаемый уровень (ориентировочно)' },
+    engTip: { en: 'Start this week', kz: 'Осы аптадан бастаңыз', ru: 'С чего начать на этой неделе' },
     profTitle: { en: 'Professions for your type', kz: 'Сіздің типіңізге сәйкес мамандықтар', ru: 'Профессии для вашего типа' },
     salary: { en: 'Salary per month', kz: 'Айлық жалақы', ru: 'Зарплата в месяц' },
     pros: { en: 'Pros', kz: 'Артықшылықтары', ru: 'Плюсы' },
@@ -81,6 +85,34 @@
 
   const form = document.getElementById('testForm');
   const resultEl = document.getElementById('result');
+  /* Вопросы строятся из questions.js */
+  const qlist = document.getElementById('qlist');
+  (window.QUESTIONS || []).forEach((row, i) => {
+    const q = document.createElement('div');
+    q.className = 'question';
+    const t = document.createElement('div');
+    t.className = 'q-title';
+    const tr = row[0].split('|');
+    t.dataset.en = (i + 1) + '. ' + tr[0];
+    t.dataset.kz = (i + 1) + '. ' + tr[1];
+    t.dataset.ru = (i + 1) + '. ' + tr[2];
+    q.append(t);
+    row.slice(1).forEach((o, j) => {
+      const [en, kz, ru] = o.split('|');
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'q' + (i + 1);
+      input.value = TYPES[j];
+      if (j === 0) input.required = true;
+      const span = document.createElement('span');
+      span.dataset.en = en; span.dataset.kz = kz; span.dataset.ru = ru;
+      label.append(input, span);
+      q.append(label);
+    });
+    qlist.append(q);
+  });
+
   const questions = form.querySelectorAll('.question');
   let lang = 'en';
   let chart = null;
@@ -159,6 +191,32 @@
     box.append(grid);
   }
 
+  function renderEnglish(type) {
+    const E = (window.ENG || {})[type];
+    if (!E) return;
+    const k = lang === 'en' ? 0 : 1; // казахский пока показывает русский текст
+    let box = document.getElementById('englishMore');
+    if (!box) {
+      box = el('div', 'eng-grid');
+      box.id = 'englishMore';
+      document.querySelector('.english-box').append(box);
+    }
+    box.textContent = '';
+    const card = (title, items) => {
+      const c = el('div', 'eng-card');
+      const ul = el('ul');
+      items.forEach(t => ul.append(el('li', '', t)));
+      c.append(el('h4', '', title), ul);
+      return c;
+    };
+    box.append(
+      card(UI.engSkills[lang], E.skills.map(x => x.split('|')[k])),
+      card(UI.engCerts[lang], E.certs),
+      card(UI.engLevel[lang], [E.level.split('|')[k]]),
+      card(UI.engTip[lang], [E.tip.split('|')[k]])
+    );
+  }
+
   function renderResult() {
     if (!last) return;
     const { perc, order } = last;
@@ -180,15 +238,17 @@
     list.className = 'scores';
     UI.names[lang].forEach((name, i) => {
       const li = document.createElement('li');
-      li.innerHTML = '<span></span><strong></strong>';
-      li.firstChild.textContent = name;
-      li.lastChild.textContent = perc[i] + '%';
+      li.innerHTML = '<span></span><strong></strong><i></i>';
+      li.children[0].textContent = name;
+      li.children[1].textContent = perc[i] + '%';
+      li.children[2].style.cssText = 'width:' + perc[i] + '%;background:' + COLORS[i];
       list.append(li);
     });
     text.append(list);
 
     document.getElementById('englishBlock').textContent = ENGLISH[top][lang];
     renderProfs(top);
+    renderEnglish(top);
 
     if (chart) {
       chart.data.labels = UI.names[lang];
