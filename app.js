@@ -22,7 +22,7 @@
     cons: { en: 'Cons', kz: 'Кемшіліктері', ru: 'Минусы' },
     note: {
       en: 'Salaries are approximate ranges for Kazakhstan, from junior to senior. Check current figures on hh.kz and enbek.kz.',
-      kz: 'Жалақы — Қазақстан бойынша шамамен алынған диапазон. Нақты деректерді hh.kz және enbek.kz сайттарында тексеріңіз. Мамандық сипаттамасы орыс тілінде көрсетіледі.',
+      kz: 'Жалақы — Қазақстан бойынша шамамен алынған диапазон. Нақты деректерді hh.kz және enbek.kz сайттарында тексеріңіз.',
       ru: 'Зарплаты — ориентировочные диапазоны по Казахстану, от начинающего до опытного специалиста. Актуальные цифры смотрите на hh.kz и enbek.kz.'
     }
   };
@@ -164,7 +164,6 @@
 
   function renderProfs(type) {
     const i = TYPES.indexOf(type);
-    const pl = lang === 'en' ? 'en' : 'ru'; // казахский текст профессий пока берётся из русского
     let box = document.getElementById('professions');
     if (!box) {
       box = el('section');
@@ -174,16 +173,24 @@
     box.textContent = '';
     box.append(el('h3', '', UI.profTitle[lang]), el('p', 'prof-note', UI.note[lang]));
     const grid = el('div', 'prof-grid');
-    (window.PROFS[type] || []).forEach(p => {
+    (window.PROFS[type] || []).forEach((p, n) => {
+      const kz = lang === 'kz' && window.PROFS_KZ ? window.PROFS_KZ[type][n] : null;
+      const ru = lang !== 'en';
+      const name = kz ? kz[0] : p[ru ? 1 : 0];
+      const desc = kz ? kz[1] : p[ru ? 3 : 2];
+      const pros = kz ? kz[2] : p[ru ? 6 : 5];
+      const cons = kz ? kz[3] : p[ru ? 8 : 7];
+      const sp = p[4].split('|');
+      const salary = sp[0] + (sp[1] ? ' (' + sp[{ en: 1, kz: 2, ru: 3 }[lang]] + ')' : '');
       const card = el('article', 'prof');
       card.style.setProperty('--c', COLORS[i]);
-      card.append(el('h4', '', p[pl === 'en' ? 0 : 1]), el('p', '', p[pl === 'en' ? 2 : 3]));
+      card.append(el('h4', '', name), el('p', '', desc));
       const sal = el('div', 'salary');
-      sal.append(el('span', '', UI.salary[lang]), el('strong', '', p[4]));
+      sal.append(el('span', '', UI.salary[lang]), el('strong', '', salary));
       card.append(sal);
-      [['pros', 5, 'plus'], ['cons', 7, 'minus']].forEach(([k, idx, cls]) => {
+      [['pros', pros, 'plus'], ['cons', cons, 'minus']].forEach(([k, txt, cls]) => {
         const ul = el('ul', cls);
-        p[idx + (pl === 'en' ? 0 : 1)].split(';').forEach(t => ul.append(el('li', '', t.trim())));
+        txt.split(';').forEach(t => ul.append(el('li', '', t.trim())));
         card.append(el('h5', cls, UI[k][lang]), ul);
       });
       grid.append(card);
@@ -194,7 +201,11 @@
   function renderEnglish(type) {
     const E = (window.ENG || {})[type];
     if (!E) return;
-    const k = lang === 'en' ? 0 : 1; // казахский пока показывает русский текст
+    const K = lang === 'kz' && window.ENG_KZ ? window.ENG_KZ[type] : null;
+    const k = lang === 'en' ? 0 : 1;
+    const skills = K ? K.skills : E.skills.map(x => x.split('|')[k]);
+    const level = K ? K.level : E.level.split('|')[k];
+    const tip = K ? K.tip : E.tip.split('|')[k];
     let box = document.getElementById('englishMore');
     if (!box) {
       box = el('div', 'eng-grid');
@@ -210,10 +221,10 @@
       return c;
     };
     box.append(
-      card(UI.engSkills[lang], E.skills.map(x => x.split('|')[k])),
+      card(UI.engSkills[lang], skills),
       card(UI.engCerts[lang], E.certs),
-      card(UI.engLevel[lang], [E.level.split('|')[k]]),
-      card(UI.engTip[lang], [E.tip.split('|')[k]])
+      card(UI.engLevel[lang], [level]),
+      card(UI.engTip[lang], [tip])
     );
   }
 
